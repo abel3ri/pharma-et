@@ -4,11 +4,27 @@
   "@language": {
     "description": "የተመረጠው ቋንቋ"
   },
-  "helloWorld": "ሰላም!",
-  "twoLanguages": "ይሄ መተግበሪያ 2 ቋንቋ ይጠቀማል",
-  "changeLanguage": "ቋንቋ ይቀይሩ",
   "headline1": "ጤና ከዚህ ይጀምራል።",
   "headline2": "የእርስዎ ጤና ፣ የእኛ ሀላፊነት።",
   "headline3": "ጤናን መጠበቅ ፣ ህይወትን መጠበቅ።",
-  "getStarted": "ይጀምሩ"
+  "getStarted": "ይጀምሩ",
+  "login": "ይግቡ",
+  "signup": "ይመዝገቡ",
+  "firstName": "ስም",
+  "lastName": "የአባት ስም",
+  "phone": "ስልክ ቁጥር",
+  "email": "ኢሜል (አማራጭ)",
+  "rePassword": "የይለፍ ቃል ድጋሚ",
+  "emailOrPhone": "ኢሜል ወይም ስልክ ቁጥር",
+  "password": "የይለፍ ቃል",
+  "enterEmail": "ኢሜል ያስገቡ",
+  "enterEmailOrPhone": "ኢሜልዎን ወይም ስልክዎን ያስገቡ",
+  "enterPassword": "የይለፍ ቃል ያስገቡ",
+  "reEnterPassword": "የይለፍ ቃል በድጋሚ ያስገቡ",
+  "enterFirstName": "ስምዎን ያስገቡ",
+  "enterLastName": "የአባት ስምዎን ያስገቡ",
+  "enterPhone": "ስልክዎን ያስገቡ",
+  "forgotPassword": "የይለፍ ቃል ረሱ?",
+  "dontHaveAccount": "መለያ የሎትም?",
+  "alreadyHaveAccount": "መለያ አሎት?"
 }

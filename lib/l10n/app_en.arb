@@ -4,11 +4,27 @@
   "@language": {
     "description": "Selected language"
   },
-  "helloWorld": "Hello World!",
-  "twoLanguages": "This app has 2 languages",
-  "changeLanguage": "Change language",
   "headline1": "Wellness Starts Here.",
   "headline2": "Your Health, Our Priority.",
   "headline3": "Preserving Health, Preserving Life.",
-  "getStarted": "Get started"
+  "getStarted": "Get started",
+  "login": "Login",
+  "signup": "Sign up",
+  "firstName": "First name",
+  "lastName": "Last name",
+  "phone": "Phone",
+  "email": "E-mail (optional)",
+  "password": "Password",
+  "rePassword": "Re-enter password",
+  "emailOrPhone": "Email or Phone",
+  "enterEmail": "Enter your email",
+  "enterEmailOrPhone": "Enter your email or phone",
+  "enterPassword": "Enter your password",
+  "reEnterPassword": "Enter your password again",
+  "forgotPassword": "Forgot password?",
+  "enterPhone": "Enter your phone",
+  "enterFirstName": "Enter your first name",
+  "enterLastName": "Enter your last name",
+  "alreadyHaveAccount": "Already have an account?",
+  "dontHaveAccount": "Don't have an account?"
 }

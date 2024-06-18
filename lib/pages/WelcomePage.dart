@@ -1,14 +1,15 @@
 import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'package:flutter/material.dart';
 import "package:font_awesome_flutter/font_awesome_flutter.dart";
+import 'package:go_router/go_router.dart';
 import 'package:pharma_et/providers/LocaleProvider.dart';
 import 'package:pharma_et/utils/ContextExtension.dart';
 import 'package:pharma_et/widgets/CustomAppBar.dart';
 import 'package:provider/provider.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
-class SplashPage extends StatelessWidget {
-  const SplashPage({super.key});
+class WelcomePage extends StatelessWidget {
+  const WelcomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -48,10 +49,13 @@ class SplashPage extends StatelessWidget {
       body: Center(
         child: Column(
           children: [
-            FaIcon(
-              FontAwesomeIcons.pills,
-              color: Theme.of(context).colorScheme.primary,
-              size: 96,
+            Hero(
+              tag: "logo",
+              child: FaIcon(
+                FontAwesomeIcons.pills,
+                color: Theme.of(context).colorScheme.primary,
+                size: 96,
+              ),
             ),
             SizedBox(height: MediaQuery.of(context).size.height * 0.02),
             Text(
@@ -121,7 +125,9 @@ class SplashPage extends StatelessWidget {
             ),
             Spacer(),
             FilledButton(
-              onPressed: () {},
+              onPressed: () {
+                GoRouter.of(context).pushNamed("login");
+              },
               child: Text(context.localizations.getStarted),
             ),
           ],
