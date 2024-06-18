@@ -1,0 +1,14 @@
+{
+  "@@locale": "en",
+  "language": "English",
+  "@language": {
+    "description": "Selected language"
+  },
+  "helloWorld": "Hello World!",
+  "twoLanguages": "This app has 2 languages",
+  "changeLanguage": "Change language",
+  "headline1": "Wellness Starts Here.",
+  "headline2": "Your Health, Our Priority.",
+  "headline3": "Preserving Health, Preserving Life.",
+  "getStarted": "Get started"
+}

@@ -1,0 +1,14 @@
+{
+  "@@locale": "am",
+  "language": "አማርኛ",
+  "@language": {
+    "description": "የተመረጠው ቋንቋ"
+  },
+  "helloWorld": "ሰላም!",
+  "twoLanguages": "ይሄ መተግበሪያ 2 ቋንቋ ይጠቀማል",
+  "changeLanguage": "ቋንቋ ይቀይሩ",
+  "headline1": "ጤና ከዚህ ይጀምራል።",
+  "headline2": "የእርስዎ ጤና ፣ የእኛ ሀላፊነት።",
+  "headline3": "ጤናን መጠበቅ ፣ ህይወትን መጠበቅ።",
+  "getStarted": "ይጀምሩ"
+}
