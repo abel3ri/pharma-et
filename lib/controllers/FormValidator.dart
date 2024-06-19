@@ -13,7 +13,7 @@ class FormValidator {
       return 'Please provide a phone number';
     }
     if (!phoneRegex.hasMatch(value))
-      return "Please provide a valid phone number";
+      return "Please enter valid phone number (+251XXXXXXXXX)";
     return null;
   }
 

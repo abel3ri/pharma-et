@@ -1,3 +1,4 @@
+import 'package:pharma_et/providers/AuthProvider.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
@@ -30,6 +31,7 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     final loginFormProvider = Provider.of<LoginFormProvider>(context);
+    final authProvider = Provider.of<AuthProvider>(context);
     return Scaffold(
       appBar: CustomAppBar(
         leading: IconButton(
@@ -92,9 +94,18 @@ class _LoginPageState extends State<LoginPage> {
               ),
               SizedBox(height: MediaQuery.of(context).size.height * 0.02),
               FilledButton(
-                onPressed: () {
+                onPressed: () async {
                   if (_formKey.currentState!.validate()) {
-                    print("Pass");
+                    final res = await authProvider.signInUser(
+                      context: context,
+                      emailPhone: _emailOrPhoneController.text,
+                      password: _passwordController.text,
+                    );
+                    res.fold((l) {
+                      l.showError(context);
+                    }, (r) {
+                      GoRouter.of(context).pushReplacementNamed("home");
+                    });
                   }
                 },
                 child: Text(context.localizations.login),

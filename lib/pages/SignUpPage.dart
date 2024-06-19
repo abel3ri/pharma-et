@@ -1,3 +1,4 @@
+import 'package:pharma_et/providers/AuthProvider.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
@@ -38,6 +39,7 @@ class _SignUpPageState extends State<SignUpPage> {
   @override
   Widget build(BuildContext context) {
     final signUpFormProvider = Provider.of<SignUpFormProvider>(context);
+    final authProvider = Provider.of<AuthProvider>(context);
     return Scaffold(
       appBar: CustomAppBar(
         leading: IconButton(
@@ -101,7 +103,7 @@ class _SignUpPageState extends State<SignUpPage> {
                 label: context.localizations.phone,
                 controller: _phoneController,
                 hintText: context.localizations.enterPhone,
-                keyboardType: TextInputType.number,
+                keyboardType: TextInputType.phone,
                 textInputAction: TextInputAction.next,
                 validator: FormValidator.phoneValidator,
               ),
@@ -140,7 +142,7 @@ class _SignUpPageState extends State<SignUpPage> {
                 controller: _rePasswordController,
                 hintText: context.localizations.reEnterPassword,
                 keyboardType: TextInputType.visiblePassword,
-                textInputAction: TextInputAction.next,
+                textInputAction: TextInputAction.done,
                 obscureText: !signUpFormProvider.showPassword,
                 validator: (value) {
                   if (value!.isEmpty) return "Please provide a password";
@@ -152,12 +154,37 @@ class _SignUpPageState extends State<SignUpPage> {
               ),
               SizedBox(height: MediaQuery.of(context).size.height * 0.02),
               FilledButton(
-                onPressed: () {
+                onPressed: () async {
                   if (_formKey.currentState!.validate()) {
-                    print("Submitted");
+                    authProvider.toggleIsLoading();
+                    authProvider.setUserFields(
+                      phoneNumber: _phoneController.text,
+                      firstName: _firstNameController.text,
+                      lastName: _lastNameController.text,
+                      password: _passwordController.text,
+                      email: _emailController.text,
+                    );
+
+                    final res = await authProvider.sendOTP(
+                      context: context,
+                    );
+
+                    authProvider.toggleIsLoading();
+
+                    res.fold((l) {
+                      l.showError(context);
+                    }, (r) {});
                   }
                 },
-                child: Text(context.localizations.signup),
+                child: authProvider.isLoading
+                    ? SizedBox(
+                        width: 16,
+                        height: 16,
+                        child: CircularProgressIndicator(
+                          color: Colors.white,
+                        ),
+                      )
+                    : Text(context.localizations.signup),
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,

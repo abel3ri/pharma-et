@@ -1,5 +1,6 @@
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:pharma_et/l10n/l10n.dart';
+import 'package:pharma_et/providers/AuthProvider.dart';
 import 'package:pharma_et/providers/LocaleProvider.dart';
 import 'package:pharma_et/providers/LoginFormProvider.dart';
 import 'package:pharma_et/providers/SignUpFormProvider.dart';
@@ -26,14 +27,10 @@ void main(List<String> args) async {
         ChangeNotifierProvider(
             create: (context) => ThemeProvider(prefs: prefs)),
         ChangeNotifierProvider(
-          create: (context) => LocaleProvider(prefs: prefs),
-        ),
-        ChangeNotifierProvider(
-          create: (context) => LoginFormProvider(),
-        ),
-        ChangeNotifierProvider(
-          create: (context) => SignUpFormProvider(),
-        ),
+            create: (context) => LocaleProvider(prefs: prefs)),
+        ChangeNotifierProvider(create: (context) => LoginFormProvider()),
+        ChangeNotifierProvider(create: (context) => SignUpFormProvider()),
+        ChangeNotifierProvider(create: (context) => AuthProvider()),
       ],
       child: Builder(
         builder: (context) {
