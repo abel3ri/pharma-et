@@ -46,91 +46,100 @@ class WelcomePage extends StatelessWidget {
           ),
         ],
       ),
-      body: Center(
-        child: Column(
-          children: [
-            Hero(
-              tag: "logo",
-              child: FaIcon(
-                FontAwesomeIcons.pills,
-                color: Theme.of(context).colorScheme.primary,
-                size: 96,
+      body: Padding(
+        padding: EdgeInsets.only(bottom: 12),
+        child: Center(
+          child: Column(
+            children: [
+              Hero(
+                tag: "logo",
+                child: FaIcon(
+                  FontAwesomeIcons.pills,
+                  color: Theme.of(context).colorScheme.primary,
+                  size: 96,
+                ),
               ),
-            ),
-            SizedBox(height: MediaQuery.of(context).size.height * 0.02),
-            Text(
-              "Pharma ET".toUpperCase(),
-              style: Theme.of(context).textTheme.headlineMedium!.copyWith(
-                    fontWeight: FontWeight.bold,
-                  ),
-            ),
-            SizedBox(height: MediaQuery.of(context).size.height * 0.08),
-            Expanded(
-              flex: 2,
-              child: PageView(
-                controller: _controller,
-                children: List.generate(
-                  3,
-                  (index) => Container(
-                    margin: EdgeInsets.symmetric(horizontal: 24),
-                    padding: EdgeInsets.symmetric(
-                      vertical: 12,
+              SizedBox(height: MediaQuery.of(context).size.height * 0.02),
+              Text(
+                "Pharma ET".toUpperCase(),
+                style: Theme.of(context).textTheme.headlineMedium!.copyWith(
+                      fontWeight: FontWeight.bold,
                     ),
-                    decoration: BoxDecoration(
-                      color: isDarkMode
-                          ? Theme.of(context).scaffoldBackgroundColor.lighten(5)
-                          : Theme.of(context).scaffoldBackgroundColor.darken(5),
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                    child: Center(
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Image.asset(
-                            "assets/images/img${index + 1}.png",
-                            width: MediaQuery.of(context).size.width * 0.5,
-                          ),
-                          SizedBox(
-                            height: MediaQuery.of(context).size.height * 0.02,
-                          ),
-                          Text(
-                            headlines[index],
-                            style:
-                                Theme.of(context).textTheme.bodyLarge!.copyWith(
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                          ),
-                        ],
+              ),
+              SizedBox(height: MediaQuery.of(context).size.height * 0.08),
+              Expanded(
+                flex: 2,
+                child: PageView(
+                  controller: _controller,
+                  children: List.generate(
+                    3,
+                    (index) => Container(
+                      margin: EdgeInsets.symmetric(horizontal: 24),
+                      padding: EdgeInsets.symmetric(
+                        vertical: 12,
+                      ),
+                      decoration: BoxDecoration(
+                        color: isDarkMode
+                            ? Theme.of(context)
+                                .scaffoldBackgroundColor
+                                .lighten(5)
+                            : Theme.of(context)
+                                .scaffoldBackgroundColor
+                                .darken(5),
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      child: Center(
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Image.asset(
+                              "assets/images/img${index + 1}.png",
+                              width: MediaQuery.of(context).size.width * 0.5,
+                            ),
+                            SizedBox(
+                              height: MediaQuery.of(context).size.height * 0.02,
+                            ),
+                            Text(
+                              headlines[index],
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodyLarge!
+                                  .copyWith(
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   ),
                 ),
               ),
-            ),
-            SizedBox(height: MediaQuery.of(context).size.height * 0.01),
-            SmoothPageIndicator(
-              controller: _controller,
-              onDotClicked: (index) {
-                _controller.animateToPage(
-                  index,
-                  duration: Duration(milliseconds: 300),
-                  curve: Curves.easeIn,
-                );
-              },
-              effect: ExpandingDotsEffect(
-                dotHeight: 12,
-                activeDotColor: Theme.of(context).colorScheme.primary,
+              SizedBox(height: MediaQuery.of(context).size.height * 0.01),
+              SmoothPageIndicator(
+                controller: _controller,
+                onDotClicked: (index) {
+                  _controller.animateToPage(
+                    index,
+                    duration: Duration(milliseconds: 300),
+                    curve: Curves.easeIn,
+                  );
+                },
+                effect: ExpandingDotsEffect(
+                  dotHeight: 12,
+                  activeDotColor: Theme.of(context).colorScheme.primary,
+                ),
+                count: 3,
               ),
-              count: 3,
-            ),
-            Spacer(),
-            FilledButton(
-              onPressed: () {
-                GoRouter.of(context).pushNamed("login");
-              },
-              child: Text(context.localizations.getStarted),
-            ),
-          ],
+              Spacer(),
+              FilledButton(
+                onPressed: () {
+                  GoRouter.of(context).pushNamed("login");
+                },
+                child: Text(context.localizations.getStarted),
+              ),
+            ],
+          ),
         ),
       ),
     );

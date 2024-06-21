@@ -29,7 +29,7 @@ class AuthProvider with ChangeNotifier {
     String? firstName = null,
     String? lastName = null,
     required String password,
-    String? email = null,
+    String? email,
   }) {
     _phoneNumber = phoneNumber;
     _email = email;
@@ -103,13 +103,13 @@ class AuthProvider with ChangeNotifier {
           "firstName": _firstName,
           "lastName": _lastName,
           "email": _email,
+          "createdAt": DateTime.now(),
         });
       }
       return right(SuccessMessage(body: "User registered successfully."));
     } on FirebaseAuthException catch (e) {
       return left(ErrorMessage(body: e.message!));
     } catch (e) {
-      print(e);
       return left(ErrorMessage(body: e.toString()));
     }
   }
@@ -133,13 +133,20 @@ class AuthProvider with ChangeNotifier {
         if (res.docs.isEmpty) {
           return left(ErrorMessage(body: "Incorrect phone number or password"));
         }
-        final userEmail = res.docs.first.data()['email'];
-        await auth.signInWithEmailAndPassword(
-          email: userEmail,
-          password: password,
-        );
+        if (res.docs.first.data()['email'] == null) {
+          _phoneNumber = emailPhone;
+          await this.sendOTP(context: context);
+          return left(ErrorMessage(body: "Redirecting to OTP Screen"));
+        } else {
+          final userEmail = res.docs.first.data()['email'];
+          await auth.signInWithEmailAndPassword(
+            email: userEmail,
+            password: password,
+          );
+          return right(null);
+        }
       }
-      return right(SuccessMessage(body: "Logged in successfully"));
+      return right(null);
     } on FirebaseAuthException catch (e) {
       if (e.message! ==
           "The supplied auth credential is incorrect, malformed or has expired.")
@@ -149,6 +156,9 @@ class AuthProvider with ChangeNotifier {
       return left(ErrorMessage(body: e.message!));
     } catch (e) {
       return left(ErrorMessage(body: e.toString()));
+    } finally {
+      _password = password;
+      notifyListeners();
     }
   }
 

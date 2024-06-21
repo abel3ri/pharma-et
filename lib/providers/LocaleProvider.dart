@@ -7,7 +7,9 @@ class LocaleProvider with ChangeNotifier {
     required this.prefs,
   });
 
-  String get locale => prefs.getString("locale") ?? "en";
+  String get locale {
+    return prefs.getString("locale") ?? "en";
+  }
 
   void updateLocale(String locale) {
     prefs.setString("locale", locale);

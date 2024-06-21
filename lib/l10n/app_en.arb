@@ -1,6 +1,6 @@
 {
   "@@locale": "en",
-  "language": "English",
+  "language": "Language",
   "@language": {
     "description": "Selected language"
   },
@@ -26,5 +26,31 @@
   "enterFirstName": "Enter your first name",
   "enterLastName": "Enter your last name",
   "alreadyHaveAccount": "Already have an account?",
-  "dontHaveAccount": "Don't have an account?"
+  "dontHaveAccount": "Don't have an account?",
+  "nutritionAndSupplements": "Nutrition and supplements",
+  "babyAndMotherCare": "Baby and mother care",
+  "multiVitamins": "Multi vitamins",
+  "healthDevicesAndSupport": "Health devices and support",
+  "personalCareAndBeautyProducts": "Personal care and beauty products",
+  "aZMedicines": "A-Z medicines",
+  "sexualWellness": "Sexual wellness",
+  "theme": "Theme",
+  "logout": "Logout",
+  "categories": "Categories",
+  "products": "Products",
+  "name": "Name",
+  "category": "Category",
+  "usage": "Usage",
+  "benefits": "Benefits",
+  "ingredients": "Ingredients",
+  "noDataFound": "No data found.",
+  "add": "Add",
+  "sendPasswordReset": "Send password reset link",
+  "verify": "Verify",
+  "didntRecieveCode": "Didn't recieve any code?",
+  "verifyYourEmail": "Verify your email address",
+  "addEmailAddress": "Add email address",
+  "resetPassword": "Reset password",
+  "verification": "Verification",
+  "profile": "Profile"
 }

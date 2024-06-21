@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
 import 'package:pharma_et/models/Error.dart';
+import 'package:pharma_et/utils/ContextExtension.dart';
 import 'package:pinput/pinput.dart';
 import 'package:provider/provider.dart';
 
@@ -46,7 +47,7 @@ class _OTPPageState extends State<OTPPage> {
                 ),
                 SizedBox(height: MediaQuery.of(context).size.height * 0.02),
                 Text(
-                  "Verification",
+                  context.localizations.verification,
                   style: Theme.of(context).textTheme.titleLarge,
                 ),
                 SizedBox(height: MediaQuery.of(context).size.height * 0.02),
@@ -127,10 +128,10 @@ class _OTPPageState extends State<OTPPage> {
                             color: Colors.white,
                           ),
                         )
-                      : Text("Verify"),
+                      : Text(context.localizations.verify),
                 ),
                 SizedBox(height: MediaQuery.of(context).size.height * 0.02),
-                Text("Didn't recieve any code?"),
+                Text(context.localizations.didntRecieveCode),
                 TextButton(
                   onPressed: authProvider.resendEnabled
                       ? () {

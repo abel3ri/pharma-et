@@ -25,7 +25,9 @@ class ErrorMessage {
           },
         ),
         padding: EdgeInsets.all(12),
-        backgroundColor: Theme.of(context).colorScheme.error,
+        backgroundColor: body == "Redirecting to OTP Screen"
+            ? Theme.of(context).colorScheme.primary
+            : Theme.of(context).colorScheme.error,
       ),
     );
   }

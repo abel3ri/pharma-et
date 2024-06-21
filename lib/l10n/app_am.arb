@@ -1,6 +1,6 @@
 {
   "@@locale": "am",
-  "language": "አማርኛ",
+  "language": "ቋንቋ",
   "@language": {
     "description": "የተመረጠው ቋንቋ"
   },
@@ -26,5 +26,31 @@
   "enterPhone": "ስልክዎን ያስገቡ",
   "forgotPassword": "የይለፍ ቃል ረሱ?",
   "dontHaveAccount": "መለያ የሎትም?",
-  "alreadyHaveAccount": "መለያ አሎት?"
+  "alreadyHaveAccount": "መለያ አሎት?",
+  "nutritionAndSupplements": "አመጋገብ እና ተጨማሪ ተወሳጆች",
+  "babyAndMotherCare": "የሕፃናት እና የእናቶች እንክብካቤ",
+  "multiVitamins": "ቫይታሚኖች",
+  "healthDevicesAndSupport": "የጤና መሣሪያዎች እና ድጋፎች",
+  "personalCareAndBeautyProducts": "የግል እንክብካቤ እና የውበት ምርቶች",
+  "aZMedicines": "A-Z መድሃኒቶች",
+  "sexualWellness": "የግብረ ስጋ ግንኙነት ደህንነት",
+  "theme": "ጭብጥ",
+  "logout": "ይውጡ",
+  "categories": "ምድቦች",
+  "products": "ምርቶች",
+  "name": "ስም",
+  "category": "ምድብ",
+  "usage": "አጠቃቀም",
+  "benefits": "ጥቅሞች",
+  "ingredients": "ግብአቶች",
+  "noDataFound": "ምንም መረጃ የለም።",
+  "add": "አስገባ",
+  "sendPasswordReset": "የይለፍ ቃል ዳግም ማስጀመሪያ ላክ",
+  "verify": "አረጋግጥ",
+  "didntRecieveCode": "ምንም ኮድ አልተቀበልኩም?",
+  "verifyYourEmail": "የኢሜይል አድራሻ አረጋግጥ",
+  "addEmailAddress": "የኢሜል አድራሻ ያስገቡ",
+  "resetPassword": "የይለፍ ቃል ይቀይሩ",
+  "verification": "ማረጋገጫ",
+  "profile": "መገለጫ"
 }

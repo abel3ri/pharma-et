@@ -96,11 +96,15 @@ class _LoginPageState extends State<LoginPage> {
               FilledButton(
                 onPressed: () async {
                   if (_formKey.currentState!.validate()) {
+                    if (FocusScope.of(context).hasFocus)
+                      FocusScope.of(context).unfocus();
+                    loginFormProvider.toggleIsLoading();
                     final res = await authProvider.signInUser(
                       context: context,
                       emailPhone: _emailOrPhoneController.text,
                       password: _passwordController.text,
                     );
+                    loginFormProvider.toggleIsLoading();
                     res.fold((l) {
                       l.showError(context);
                     }, (r) {
@@ -108,10 +112,20 @@ class _LoginPageState extends State<LoginPage> {
                     });
                   }
                 },
-                child: Text(context.localizations.login),
+                child: loginFormProvider.isLoading
+                    ? SizedBox(
+                        width: 16,
+                        height: 16,
+                        child: CircularProgressIndicator(
+                          color: Colors.white,
+                        ),
+                      )
+                    : Text(context.localizations.login),
               ),
               TextButton(
-                onPressed: () {},
+                onPressed: () {
+                  GoRouter.of(context).pushReplacementNamed("forgot");
+                },
                 child: Text(context.localizations.forgotPassword),
               ),
               Row(

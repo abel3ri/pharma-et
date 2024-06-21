@@ -162,7 +162,9 @@ class _SignUpPageState extends State<SignUpPage> {
                       firstName: _firstNameController.text,
                       lastName: _lastNameController.text,
                       password: _passwordController.text,
-                      email: _emailController.text,
+                      email: _emailController.text.isEmpty
+                          ? null
+                          : _emailController.text,
                     );
 
                     final res = await authProvider.sendOTP(

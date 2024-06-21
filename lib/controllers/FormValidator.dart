@@ -8,6 +8,13 @@ class FormValidator {
     return null;
   }
 
+  static String? emailValidator(String? value) {
+    if (value!.isEmpty) return "Please provide an email address.";
+    if (!emailRegex.hasMatch(value))
+      return "Please provide a valid email address.";
+    return null;
+  }
+
   static String? phoneValidator(String? value) {
     if (value == null || value.isEmpty) {
       return 'Please provide a phone number';
