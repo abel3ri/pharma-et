@@ -40,14 +40,14 @@ class _CategoryDetailsPageState extends State<CategoryDetailsPage> {
           onPressed: () {
             GoRouter.of(context).pop();
           },
-          icon: FaIcon(FontAwesomeIcons.xmark),
+          icon: const FaIcon(FontAwesomeIcons.xmark),
         ),
       ),
       body: FutureBuilder(
         future: fetchItems,
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return Center(child: CategoriesShimmerLoader());
+            return const Center(child: CategoriesShimmerLoader());
           } else if (snapshot.hasError) {
             return Center(child: Text('Error: ${snapshot.error}'));
           } else if (!snapshot.hasData ||
@@ -63,11 +63,11 @@ class _CategoryDetailsPageState extends State<CategoryDetailsPage> {
           bool isDarkMode = Theme.of(context).brightness == Brightness.dark;
 
           return SingleChildScrollView(
-            physics: BouncingScrollPhysics(),
-            padding: EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+            physics: const BouncingScrollPhysics(),
+            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
             child: Column(
               children: [
-                Container(
+                SizedBox(
                   height: MediaQuery.of(context).size.height * 0.25,
                   width: double.infinity,
                   child: Stack(
@@ -101,13 +101,14 @@ class _CategoryDetailsPageState extends State<CategoryDetailsPage> {
                   ),
                   HeaderText(headerText: context.localizations.products),
                   ListView.separated(
-                    physics: BouncingScrollPhysics(),
-                    padding: EdgeInsets.symmetric(horizontal: 4, vertical: 24),
+                    physics: const BouncingScrollPhysics(),
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 4, vertical: 24),
                     shrinkWrap: true,
                     itemBuilder: (context, index) {
                       return Container(
-                        padding:
-                            EdgeInsets.symmetric(horizontal: 12, vertical: 16),
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 12, vertical: 16),
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(4),
                             color: isDarkMode
@@ -169,8 +170,9 @@ class _CategoryDetailsPageState extends State<CategoryDetailsPage> {
                                 height:
                                     MediaQuery.of(context).size.height * 0.01),
                             ListView.separated(
-                              physics: NeverScrollableScrollPhysics(),
-                              separatorBuilder: (context, index) => SizedBox(
+                              physics: const NeverScrollableScrollPhysics(),
+                              separatorBuilder: (context, index) =>
+                                  const SizedBox(
                                 height: 8,
                               ),
                               itemBuilder: (context, index) {
@@ -178,15 +180,15 @@ class _CategoryDetailsPageState extends State<CategoryDetailsPage> {
                                   children: [
                                     CircleAvatar(
                                       radius: 12,
-                                      child: Container(
-                                        child: Text('${index + 1}'),
-                                      ),
+                                      child: Text('${index + 1}'),
                                     ),
-                                    SizedBox(
+                                    const SizedBox(
                                       width: 4,
                                     ),
-                                    Text(categoryProvider.items[index]
-                                        ['benefits'][index])
+                                    Text(
+                                      categoryProvider.items[index]['benefits']
+                                          [index],
+                                    )
                                   ],
                                 );
                               },
@@ -197,7 +199,7 @@ class _CategoryDetailsPageState extends State<CategoryDetailsPage> {
                             SizedBox(
                               height: MediaQuery.of(context).size.height * 0.02,
                             ),
-                            Divider(),
+                            const Divider(),
                             if (categoryProvider.items[index]['ingredients'] !=
                                 null)
                               Row(
@@ -226,12 +228,20 @@ class _CategoryDetailsPageState extends State<CategoryDetailsPage> {
                                   ),
                                 ],
                               ),
+                            SizedBox(
+                              height: MediaQuery.of(context).size.height * 0.02,
+                            ),
+                            DetailsRow(
+                              label: "Price",
+                              value:
+                                  "${categoryProvider.items[index]['price']} birr",
+                            )
                           ],
                         ),
                       );
                     },
                     separatorBuilder: (context, index) {
-                      return SizedBox(
+                      return const SizedBox(
                         height: 24,
                       );
                     },
@@ -239,7 +249,7 @@ class _CategoryDetailsPageState extends State<CategoryDetailsPage> {
                   ),
                 ],
                 if (categoryProvider.items.isEmpty) ...[
-                  SizedBox(
+                  const SizedBox(
                     height: 32,
                   ),
                   Center(
@@ -259,7 +269,7 @@ class _CategoryDetailsPageState extends State<CategoryDetailsPage> {
 }
 
 class DetailsRow extends StatelessWidget {
-  DetailsRow({
+  const DetailsRow({
     super.key,
     required this.label,
     required this.value,

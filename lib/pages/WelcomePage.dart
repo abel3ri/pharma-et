@@ -13,7 +13,7 @@ class WelcomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final PageController _controller = PageController();
+    final PageController controller = PageController();
     final headlines = [
       context.localizations.headline1,
       context.localizations.headline2,
@@ -24,19 +24,24 @@ class WelcomePage extends StatelessWidget {
       appBar: CustomAppBar(
         actions: [
           DropdownButton(
+            alignment: Alignment.centerRight,
             elevation: 0,
-            padding: EdgeInsets.symmetric(horizontal: 12),
+            padding: const EdgeInsets.symmetric(horizontal: 12),
             value: Provider.of<LocaleProvider>(context).locale,
-            underline: SizedBox.shrink(),
+            underline: const SizedBox.shrink(),
             borderRadius: BorderRadius.circular(8),
-            items: [
+            items: const [
               DropdownMenuItem(
-                child: Text("English"),
                 value: "en",
+                child: Text("English"),
               ),
               DropdownMenuItem(
-                child: Text("አማርኛ"),
                 value: "am",
+                child: Text("አማርኛ"),
+              ),
+              DropdownMenuItem(
+                value: "or",
+                child: Text("Afaan Oromoo"),
               ),
             ],
             onChanged: (language) {
@@ -47,7 +52,7 @@ class WelcomePage extends StatelessWidget {
         ],
       ),
       body: Padding(
-        padding: EdgeInsets.only(bottom: 12),
+        padding: const EdgeInsets.only(bottom: 12),
         child: Center(
           child: Column(
             children: [
@@ -70,12 +75,12 @@ class WelcomePage extends StatelessWidget {
               Expanded(
                 flex: 2,
                 child: PageView(
-                  controller: _controller,
+                  controller: controller,
                   children: List.generate(
                     3,
                     (index) => Container(
-                      margin: EdgeInsets.symmetric(horizontal: 24),
-                      padding: EdgeInsets.symmetric(
+                      margin: const EdgeInsets.symmetric(horizontal: 24),
+                      padding: const EdgeInsets.symmetric(
                         vertical: 12,
                       ),
                       decoration: BoxDecoration(
@@ -117,11 +122,11 @@ class WelcomePage extends StatelessWidget {
               ),
               SizedBox(height: MediaQuery.of(context).size.height * 0.01),
               SmoothPageIndicator(
-                controller: _controller,
+                controller: controller,
                 onDotClicked: (index) {
-                  _controller.animateToPage(
+                  controller.animateToPage(
                     index,
-                    duration: Duration(milliseconds: 300),
+                    duration: const Duration(milliseconds: 300),
                     curve: Curves.easeIn,
                   );
                 },
@@ -131,7 +136,7 @@ class WelcomePage extends StatelessWidget {
                 ),
                 count: 3,
               ),
-              Spacer(),
+              const Spacer(),
               FilledButton(
                 onPressed: () {
                   GoRouter.of(context).pushNamed("login");

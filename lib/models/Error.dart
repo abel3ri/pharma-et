@@ -16,7 +16,7 @@ class ErrorMessage {
                 color: Colors.white,
               ),
         ),
-        duration: Duration(seconds: 3),
+        duration: const Duration(seconds: 3),
         action: SnackBarAction(
           textColor: Colors.white,
           label: "OK",
@@ -24,7 +24,7 @@ class ErrorMessage {
             ScaffoldMessenger.of(context).hideCurrentSnackBar();
           },
         ),
-        padding: EdgeInsets.all(12),
+        padding: const EdgeInsets.all(12),
         backgroundColor: body == "Redirecting to OTP Screen"
             ? Theme.of(context).colorScheme.primary
             : Theme.of(context).colorScheme.error,

@@ -31,7 +31,7 @@ class _OTPPageState extends State<OTPPage> {
     final authProvider = Provider.of<AuthProvider>(context);
     return Scaffold(
       body: SafeArea(
-        minimum: EdgeInsets.symmetric(vertical: 96),
+        minimum: const EdgeInsets.symmetric(vertical: 96),
         child: Center(
           child: Form(
             key: _formKey,
@@ -51,15 +51,17 @@ class _OTPPageState extends State<OTPPage> {
                   style: Theme.of(context).textTheme.titleLarge,
                 ),
                 SizedBox(height: MediaQuery.of(context).size.height * 0.02),
-                Text("Enter the OTP sent to your phone number"),
+                const Text("Enter the OTP sent to your phone number"),
                 SizedBox(height: MediaQuery.of(context).size.height * 0.02),
                 Pinput(
                   controller: _otpController,
                   validator: (value) {
-                    if (value!.isEmpty)
+                    if (value!.isEmpty) {
                       return "Please enter OTP sent to your device";
-                    if (value.length < 6)
+                    }
+                    if (value.length < 6) {
                       return "OTP must be at least 6 chars long";
+                    }
                     return null;
                   },
                   length: 6,
@@ -121,7 +123,7 @@ class _OTPPageState extends State<OTPPage> {
                     }
                   },
                   child: authProvider.isLoading
-                      ? SizedBox(
+                      ? const SizedBox(
                           width: 20,
                           height: 20,
                           child: CircularProgressIndicator(

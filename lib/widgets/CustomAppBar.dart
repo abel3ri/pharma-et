@@ -7,7 +7,8 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final List<Widget>? actions;
   final Widget? leading;
   final PreferredSizeWidget? bottom;
-  CustomAppBar({
+  const CustomAppBar({
+    super.key,
     this.title,
     this.actions,
     this.leading,
@@ -16,7 +17,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(right: 12),
+      padding: const EdgeInsets.only(right: 12),
       child: AppBar(
         surfaceTintColor: Colors.transparent,
         backgroundColor: Colors.transparent,

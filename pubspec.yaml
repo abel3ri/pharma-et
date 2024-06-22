@@ -54,11 +54,19 @@ dependencies:
   intl: ^0.19.0
   flutter_launcher_icons: ^0.13.1
   flutter_native_splash: ^2.4.0
+  rxdart: ^0.28.0
+  carousel_slider: ^4.2.1
+  curved_navigation_bar: ^1.0.6
+  flutter_staggered_grid_view: ^0.7.0
+  image_picker: ^1.1.2
+  firebase_storage: ^12.0.1
+  flutter_image_compress: ^2.3.0
+  path_provider: ^2.1.3
 
 dev_dependencies:
+  flutter_lints: ^4.0.0
   flutter_test:
     sdk: flutter
-  flutter_launcher_icons: "^0.13.1"
 
 flutter_launcher_icons:
   android: "launcher_icon"
@@ -87,6 +95,7 @@ flutter:
   assets:
     - assets/images/
     - assets/images/grid_images/
+    - assets/images/banner_images/
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
@@ -103,20 +112,12 @@ flutter:
   fonts:
     - family: Montserrat
       fonts:
-        - asset: assets/fonts/Montserrat-Thin.ttf
-          weight: 100
-        - asset: assets/fonts/Montserrat-light.ttf
-          weight: 300
         - asset: assets/fonts/Montserrat-Regular.ttf
           weight: 400
         - asset: assets/fonts/Montserrat-Medium.ttf
           weight: 500
         - asset: assets/fonts/Montserrat-Bold.ttf
           weight: 700
-        - asset: assets/fonts/Montserrat-ExtraBold.ttf
-          weight: 800
-        - asset: assets/fonts/Montserrat-Black.ttf
-          weight: 900
   # fonts:
   #   - family: Schyler
   #     fonts:

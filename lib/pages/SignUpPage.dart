@@ -46,11 +46,11 @@ class _SignUpPageState extends State<SignUpPage> {
           onPressed: () {
             GoRouter.of(context).pop();
           },
-          icon: FaIcon(FontAwesomeIcons.xmark),
+          icon: const FaIcon(FontAwesomeIcons.xmark),
         ),
       ),
       body: SingleChildScrollView(
-        physics: BouncingScrollPhysics(),
+        physics: const BouncingScrollPhysics(),
         padding: const EdgeInsets.only(left: 24, right: 24, bottom: 24),
         child: Form(
           key: _formKey,
@@ -85,7 +85,7 @@ class _SignUpPageState extends State<SignUpPage> {
                       validator: FormValidator.nameValidator,
                     ),
                   ),
-                  SizedBox(width: 8),
+                  const SizedBox(width: 8),
                   Expanded(
                     child: FormInputField(
                       label: context.localizations.lastName,
@@ -156,7 +156,6 @@ class _SignUpPageState extends State<SignUpPage> {
               FilledButton(
                 onPressed: () async {
                   if (_formKey.currentState!.validate()) {
-                    authProvider.toggleIsLoading();
                     authProvider.setUserFields(
                       phoneNumber: _phoneController.text,
                       firstName: _firstNameController.text,
@@ -171,15 +170,13 @@ class _SignUpPageState extends State<SignUpPage> {
                       context: context,
                     );
 
-                    authProvider.toggleIsLoading();
-
                     res.fold((l) {
                       l.showError(context);
                     }, (r) {});
                   }
                 },
                 child: authProvider.isLoading
-                    ? SizedBox(
+                    ? const SizedBox(
                         width: 16,
                         height: 16,
                         child: CircularProgressIndicator(

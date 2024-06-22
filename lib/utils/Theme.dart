@@ -1,9 +1,12 @@
 import 'package:flex_color_scheme/flex_color_scheme.dart';
+import 'package:flutter/material.dart';
 
 class AppTheme {
   static final lightTheme = FlexThemeData.light(
     scheme: FlexScheme.jungle,
     surfaceMode: FlexSurfaceMode.levelSurfacesLowScaffold,
+    scaffoldBackground: Colors.white.darken(5),
+    appBarBackground: Colors.white.darken(5),
     blendLevel: 7,
     subThemesData: const FlexSubThemesData(
       blendOnLevel: 10,

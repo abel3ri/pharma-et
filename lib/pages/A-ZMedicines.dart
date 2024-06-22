@@ -52,19 +52,19 @@ class _AZMedicinesState extends State<AZMedicines> {
           onPressed: () {
             GoRouter.of(context).pop();
           },
-          icon: FaIcon(FontAwesomeIcons.xmark),
+          icon: const FaIcon(FontAwesomeIcons.xmark),
         ),
       ),
       body: FutureBuilder(
           future: fetchMedicines,
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
-              return Center(child: CategoriesShimmerLoader());
+              return const Center(child: CategoriesShimmerLoader());
             } else if (snapshot.hasError) {
               return Center(child: Text('Error: ${snapshot.error}'));
             } else if (!snapshot.hasData ||
                 snapshot.data!.runtimeType == ErrorMessage) {
-              return Center(child: Text('No data found'));
+              return const Center(child: Text('No data found'));
             }
 
             final medicineList = medicinesProvider.medicines
@@ -76,16 +76,16 @@ class _AZMedicinesState extends State<AZMedicines> {
                 )
                 .toList();
             return AzListView(
-              physics: BouncingScrollPhysics(),
+              physics: const BouncingScrollPhysics(),
               data: medicineList,
-              padding: EdgeInsets.only(right: 32, left: 12),
-              indexBarOptions:
-                  IndexBarOptions(indexHintAlignment: Alignment.centerRight),
+              padding: const EdgeInsets.only(right: 32, left: 12),
+              indexBarOptions: const IndexBarOptions(
+                  indexHintAlignment: Alignment.centerRight),
               itemCount: medicineList.length,
               itemBuilder: (context, index) => GestureDetector(
                 onTap: () {},
                 child: Card(
-                  margin: EdgeInsets.symmetric(vertical: 12),
+                  margin: const EdgeInsets.symmetric(vertical: 12),
                   elevation: 0,
                   color: isDarkMode
                       ? Theme.of(context).scaffoldBackgroundColor.lighten(10)
@@ -93,7 +93,8 @@ class _AZMedicinesState extends State<AZMedicines> {
                   surfaceTintColor: Colors.transparent,
                   // color: Colors.black,
                   child: Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 12, vertical: 24),
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 12, vertical: 24),
                     child: Text(
                       medicinesProvider.medicines[index]['name'],
                       style: Theme.of(context).textTheme.bodyLarge!.copyWith(

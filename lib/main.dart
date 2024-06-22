@@ -1,11 +1,15 @@
+import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:pharma_et/l10n/l10n.dart';
 import 'package:pharma_et/providers/AuthProvider.dart';
+import 'package:pharma_et/providers/BannerCarouselProvider.dart';
 import 'package:pharma_et/providers/CategoriesProvider.dart';
 import 'package:pharma_et/providers/EmailVerificationProvider.dart';
 import 'package:pharma_et/providers/LocaleProvider.dart';
 import 'package:pharma_et/providers/LoginFormProvider.dart';
 import 'package:pharma_et/providers/MedicineListProvider.dart';
+import 'package:pharma_et/providers/NavigationBarProvider.dart';
+import 'package:pharma_et/providers/PrescriptionImageProvider.dart';
 import 'package:pharma_et/providers/SignUpFormProvider.dart';
 import 'package:pharma_et/providers/UserProvider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -21,6 +25,9 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 void main(List<String> args) async {
   WidgetsFlutterBinding.ensureInitialized();
+  await SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+  ]);
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
@@ -38,8 +45,16 @@ void main(List<String> args) async {
         ChangeNotifierProvider(create: (context) => MedicineListProvider()),
         ChangeNotifierProvider(create: (context) => CategoriesProvider()),
         ChangeNotifierProvider(create: (context) => UserProvider()),
+        ChangeNotifierProvider(create: (context) => NavigationBarProvider()),
         ChangeNotifierProvider(
-            create: (context) => EmailVerificationProvider()),
+          create: (context) => EmailVerificationProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => BannerCarouselProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => PrescriptionImageProvider(),
+        ),
       ],
       child: Builder(
         builder: (context) {
@@ -57,7 +72,7 @@ void main(List<String> args) async {
                     : ThemeMode.light,
             supportedLocales: L10n.locals,
             locale: Locale(locale),
-            localizationsDelegates: [
+            localizationsDelegates: const [
               GlobalMaterialLocalizations.delegate,
               GlobalWidgetsLocalizations.delegate,
               GlobalCupertinoLocalizations.delegate,

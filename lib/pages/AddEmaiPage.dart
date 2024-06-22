@@ -17,8 +17,8 @@ class AddEmailAddress extends StatefulWidget {
 }
 
 class _AddEmailAddressState extends State<AddEmailAddress> {
-  TextEditingController _emailController = TextEditingController();
-  GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  final TextEditingController _emailController = TextEditingController();
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,11 +27,11 @@ class _AddEmailAddressState extends State<AddEmailAddress> {
           onPressed: () {
             GoRouter.of(context).pop();
           },
-          icon: FaIcon(FontAwesomeIcons.xmark),
+          icon: const FaIcon(FontAwesomeIcons.xmark),
         ),
       ),
       body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 24),
+        padding: const EdgeInsets.symmetric(horizontal: 24),
         child: Center(
           child: Form(
             key: _formKey,
@@ -85,7 +85,7 @@ class _AddEmailAddressState extends State<AddEmailAddress> {
                   },
                   child:
                       Provider.of<EmailVerificationProvider>(context).isLoading
-                          ? SizedBox(
+                          ? const SizedBox(
                               width: 14,
                               height: 14,
                               child: CircularProgressIndicator(

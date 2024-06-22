@@ -38,11 +38,11 @@ class _LoginPageState extends State<LoginPage> {
           onPressed: () {
             GoRouter.of(context).pop();
           },
-          icon: FaIcon(FontAwesomeIcons.xmark),
+          icon: const FaIcon(FontAwesomeIcons.xmark),
         ),
       ),
       body: SingleChildScrollView(
-        physics: BouncingScrollPhysics(),
+        physics: const BouncingScrollPhysics(),
         padding: const EdgeInsets.only(left: 24, right: 24, bottom: 24),
         child: Form(
           key: _formKey,
@@ -96,8 +96,9 @@ class _LoginPageState extends State<LoginPage> {
               FilledButton(
                 onPressed: () async {
                   if (_formKey.currentState!.validate()) {
-                    if (FocusScope.of(context).hasFocus)
+                    if (FocusScope.of(context).hasFocus) {
                       FocusScope.of(context).unfocus();
+                    }
                     loginFormProvider.toggleIsLoading();
                     final res = await authProvider.signInUser(
                       context: context,
@@ -113,7 +114,7 @@ class _LoginPageState extends State<LoginPage> {
                   }
                 },
                 child: loginFormProvider.isLoading
-                    ? SizedBox(
+                    ? const SizedBox(
                         width: 16,
                         height: 16,
                         child: CircularProgressIndicator(

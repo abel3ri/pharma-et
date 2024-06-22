@@ -9,7 +9,7 @@ class CategoriesShimmerLoader extends StatelessWidget {
   Widget build(BuildContext context) {
     final isDarkMode = Theme.of(context).brightness == Brightness.dark;
     return ListView.builder(
-      physics: BouncingScrollPhysics(),
+      physics: const BouncingScrollPhysics(),
       shrinkWrap: true,
       itemCount: 6,
       itemBuilder: (context, index) {
@@ -33,7 +33,7 @@ class CategoriesShimmerLoader extends StatelessWidget {
                   width: double.infinity,
                   height: 100.0,
                 ),
-                SizedBox(height: 8.0),
+                const SizedBox(height: 8.0),
                 Container(
                   width: 200.0,
                   height: 20.0,

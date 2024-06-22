@@ -10,8 +10,8 @@ class FormInputField extends StatelessWidget {
     this.obscureText = false,
     required this.validator,
     required this.label,
-    this.suffix = null,
-    this.prefix = null,
+    this.suffix,
+    this.prefix,
     super.key,
   });
 
@@ -35,14 +35,15 @@ class FormInputField extends StatelessWidget {
           ),
           child: Text(label),
         ),
-        SizedBox(height: 6),
+        const SizedBox(height: 6),
         TextFormField(
           controller: controller,
           textInputAction: textInputAction,
           keyboardType: keyboardType,
           obscureText: obscureText,
           decoration: InputDecoration(
-            contentPadding: EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+            contentPadding:
+                const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
             hintText: hintText,
             enabledBorder: OutlineInputBorder(
               borderSide: BorderSide.none,

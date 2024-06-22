@@ -52,5 +52,12 @@
   "addEmailAddress": "የኢሜል አድራሻ ያስገቡ",
   "resetPassword": "የይለፍ ቃል ይቀይሩ",
   "verification": "ማረጋገጫ",
-  "profile": "መገለጫ"
+  "profile": "መገለጫ",
+  "boostYoutPower": "በፕሮቲን ዱቄቶች እና ተጨማሪዎች ተወሳጆች ኃይልዎን ያሳድጉ",
+  "allMedsdDeliveredToYourDoorStep": "ሁሉም መድሃኒቶችዎ፣ ወደ ደጃፍዎ በቀላሉ ይደርሳሉ",
+  "pharmacistAssitant": "የእርስዎ የፋርማሲስት ረዳት፣ በማንኛውም ጊዜ፣ በማንኛውም ቦታ",
+  "pickPrescriptionPicture": "በሐኪም የታዘዘ ምስል ይምረጡ",
+  "upload": "ስቀል",
+  "camera": "ካሜራ",
+  "gallery": "ማዕከለ-ስዕላት"
 }

@@ -558,7 +558,6 @@ class DBSeeder {
       await medicines.add(medicine);
     }
 
-    print("Data seeded successfully!");
   }
 
   static Future<void> seedBeautyProds() async {

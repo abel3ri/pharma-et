@@ -15,7 +15,8 @@ class AppDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Drawer(
-      shape: RoundedRectangleBorder(),
+      shape: const RoundedRectangleBorder(),
+      width: MediaQuery.of(context).size.width * 0.8,
       child: SafeArea(
         child: Center(
           child: Column(
@@ -40,14 +41,15 @@ class AppDrawer extends StatelessWidget {
                       ),
                 ),
               ),
-              Divider(),
+              const Divider(),
               ListTile(
                 title: Text(context.localizations.theme),
                 trailing: DropdownButton(
+                  alignment: Alignment.centerRight,
                   elevation: 0,
-                  underline: SizedBox.shrink(),
+                  underline: const SizedBox.shrink(),
                   value: Provider.of<ThemeProvider>(context).theme,
-                  items: [
+                  items: const [
                     DropdownMenuItem(
                       value: "system",
                       child: Text("Device"),
@@ -70,10 +72,12 @@ class AppDrawer extends StatelessWidget {
               ListTile(
                 title: Text(context.localizations.language),
                 trailing: DropdownButton(
+                  alignment: Alignment.centerRight,
                   elevation: 0,
-                  underline: SizedBox.shrink(),
+                  underline: const SizedBox.shrink(),
                   value: Provider.of<LocaleProvider>(context).locale,
-                  items: [
+                  isDense: true,
+                  items: const [
                     DropdownMenuItem(
                       value: "en",
                       child: Text("English"),
@@ -82,6 +86,10 @@ class AppDrawer extends StatelessWidget {
                       value: "am",
                       child: Text("አማርኛ"),
                     ),
+                    DropdownMenuItem(
+                      value: "or",
+                      child: Text("Afaan Oromoo"),
+                    ),
                   ],
                   onChanged: (value) {
                     Provider.of<LocaleProvider>(context, listen: false)
@@ -89,7 +97,16 @@ class AppDrawer extends StatelessWidget {
                   },
                 ),
               ),
-              Spacer(),
+              ListTile(
+                title: TextButton.icon(
+                  onPressed: () {
+                    GoRouter.of(context).pushNamed("prescriptions");
+                  },
+                  icon: const FaIcon(FontAwesomeIcons.upRightFromSquare),
+                  label: const Text("Uploaded prescriptions"),
+                ),
+              ),
+              const Spacer(),
               Padding(
                 padding:
                     const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
@@ -98,23 +115,22 @@ class AppDrawer extends StatelessWidget {
                     await auth.signOut();
                     GoRouter.of(context).pushReplacementNamed("splash");
                   },
-                  child: Text(context.localizations.logout),
                   style: ButtonStyle(
                     backgroundColor: WidgetStatePropertyAll(
                       Theme.of(context).colorScheme.error,
                     ),
                   ),
+                  child: Text(context.localizations.logout),
                 ),
               ),
-              Align(
+              const Align(
                 alignment: Alignment.center,
-                child: Text("version 1.0.0"),
+                child: Text("version 1.1.0"),
               ),
             ],
           ),
         ),
       ),
-      width: MediaQuery.of(context).size.width * 0.8,
     );
   }
 }

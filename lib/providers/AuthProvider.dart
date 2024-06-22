@@ -26,8 +26,8 @@ class AuthProvider with ChangeNotifier {
 
   void setUserFields({
     required String phoneNumber,
-    String? firstName = null,
-    String? lastName = null,
+    String? firstName,
+    String? lastName,
     required String password,
     String? email,
   }) {
@@ -43,6 +43,8 @@ class AuthProvider with ChangeNotifier {
     required BuildContext context,
   }) async {
     try {
+      _isLoading = true;
+      notifyListeners();
       _resendEnabled = false;
       _resendCountdown = 60;
       await auth.verifyPhoneNumber(
@@ -56,6 +58,7 @@ class AuthProvider with ChangeNotifier {
           _resendToken = forceResendingToken!;
 
           startResendTimer();
+          _isLoading = false;
           GoRouter.of(context).pushReplacementNamed("otp");
         },
         codeAutoRetrievalTimeout: (verificationId) {
@@ -63,7 +66,7 @@ class AuthProvider with ChangeNotifier {
           throw FirebaseAuthException(code: "404");
         },
         forceResendingToken: _resendToken,
-        timeout: Duration(seconds: 60),
+        timeout: const Duration(seconds: 60),
       );
       return right(SuccessMessage(body: "Success"));
     } on FirebaseAuthException catch (e) {
@@ -72,6 +75,9 @@ class AuthProvider with ChangeNotifier {
       return left(ErrorMessage(body: e.message!));
     } catch (e) {
       return left(ErrorMessage(body: e.toString()));
+    } finally {
+      _isLoading = false;
+      notifyListeners();
     }
   }
 
@@ -79,6 +85,7 @@ class AuthProvider with ChangeNotifier {
     required String otp,
   }) async {
     try {
+      notifyListeners();
       final cred = PhoneAuthProvider.credential(
         verificationId: _verificationId!,
         smsCode: otp,
@@ -135,7 +142,8 @@ class AuthProvider with ChangeNotifier {
         }
         if (res.docs.first.data()['email'] == null) {
           _phoneNumber = emailPhone;
-          await this.sendOTP(context: context);
+          // ignore: use_build_context_synchronously
+          await sendOTP(context: context);
           return left(ErrorMessage(body: "Redirecting to OTP Screen"));
         } else {
           final userEmail = res.docs.first.data()['email'];
@@ -149,8 +157,9 @@ class AuthProvider with ChangeNotifier {
       return right(null);
     } on FirebaseAuthException catch (e) {
       if (e.message! ==
-          "The supplied auth credential is incorrect, malformed or has expired.")
+          "The supplied auth credential is incorrect, malformed or has expired.") {
         return left(ErrorMessage(body: "Incorrect email or password"));
+      }
       return left(ErrorMessage(body: e.message!));
     } on FirebaseException catch (e) {
       return left(ErrorMessage(body: e.message!));
@@ -163,7 +172,7 @@ class AuthProvider with ChangeNotifier {
   }
 
   void startResendTimer() {
-    _resendTimer = Timer.periodic(Duration(seconds: 1), (timer) {
+    _resendTimer = Timer.periodic(const Duration(seconds: 1), (timer) {
       if (_resendCountdown > 0) {
         _resendCountdown--;
         notifyListeners();

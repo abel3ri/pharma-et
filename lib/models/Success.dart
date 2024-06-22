@@ -16,7 +16,7 @@ class SuccessMessage {
                 color: Colors.white,
               ),
         ),
-        duration: Duration(seconds: 3),
+        duration: const Duration(seconds: 3),
         action: SnackBarAction(
           textColor: Colors.white,
           label: "OK",
@@ -24,7 +24,7 @@ class SuccessMessage {
             ScaffoldMessenger.of(context).hideCurrentSnackBar();
           },
         ),
-        padding: EdgeInsets.all(12),
+        padding: const EdgeInsets.all(12),
         backgroundColor: Theme.of(context).colorScheme.primary,
       ),
     );

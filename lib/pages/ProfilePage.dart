@@ -9,7 +9,6 @@ import 'package:pharma_et/providers/EmailVerificationProvider.dart';
 import 'package:pharma_et/providers/UserProvider.dart';
 import 'package:pharma_et/utils/Constants.dart';
 import 'package:pharma_et/utils/ContextExtension.dart';
-import 'package:pharma_et/widgets/CustomAppBar.dart';
 import 'package:fpdart/fpdart.dart' hide State;
 import 'package:provider/provider.dart';
 
@@ -32,20 +31,11 @@ class _ProfilePageState extends State<ProfilePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(
-        title: context.localizations.profile,
-        leading: IconButton(
-          onPressed: () {
-            GoRouter.of(context).pop();
-          },
-          icon: FaIcon(FontAwesomeIcons.xmark),
-        ),
-      ),
       body: FutureBuilder(
         future: fetchUserData,
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return Center(child: CircularProgressIndicator());
+            return const Center(child: CircularProgressIndicator());
           } else if (snapshot.hasError) {
             return Center(child: Text('Error: ${snapshot.error}'));
           } else if (!snapshot.hasData ||
@@ -86,18 +76,18 @@ class _ProfilePageState extends State<ProfilePage> {
                             backgroundColor:
                                 Theme.of(context).colorScheme.primary,
                             radius: 30,
-                            child: Icon(
+                            child: const Icon(
                               FontAwesomeIcons.user,
                               color: Colors.white,
                             ),
                           ),
-                          SizedBox(width: 16),
+                          const SizedBox(width: 16),
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
                                 fullName,
-                                style: TextStyle(
+                                style: const TextStyle(
                                     fontSize: 20, fontWeight: FontWeight.bold),
                               ),
                               Text(
@@ -108,41 +98,41 @@ class _ProfilePageState extends State<ProfilePage> {
                           ),
                         ],
                       ),
-                      SizedBox(height: 16),
+                      const SizedBox(height: 16),
                       Row(
                         children: [
                           Icon(
                             Icons.phone,
                             color: Theme.of(context).colorScheme.primary,
                           ),
-                          SizedBox(width: 8),
+                          const SizedBox(width: 8),
                           Text(
                             phoneNumber,
-                            style: TextStyle(fontSize: 16),
+                            style: const TextStyle(fontSize: 16),
                           ),
                         ],
                       ),
-                      SizedBox(height: 16),
+                      const SizedBox(height: 16),
                       Row(
                         children: [
                           Icon(
                             Icons.calendar_today,
                             color: Theme.of(context).colorScheme.primary,
                           ),
-                          SizedBox(width: 8),
+                          const SizedBox(width: 8),
                           Text(
                             'Joined ${DateFormat.yMMMd("en-US").format(createdAt)}',
-                            style: TextStyle(fontSize: 16),
+                            style: const TextStyle(fontSize: 16),
                           ),
                         ],
                       ),
                       if (email != "No email" &&
                           !auth.currentUser!.emailVerified) ...[
-                        SizedBox(height: 16),
+                        const SizedBox(height: 16),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Text("Verify your email address"),
+                            const Text("Verify your email address"),
                             TextButton(
                               onPressed: () async {
                                 final res = await Provider.of<
@@ -157,28 +147,28 @@ class _ProfilePageState extends State<ProfilePage> {
                                   r.showSuccess(context);
                                 });
                               },
-                              child: Text("Verify"),
+                              child: const Text("Verify"),
                             ),
                           ],
                         ),
                       ],
                       if (email == "No email") ...[
-                        SizedBox(height: 16),
+                        const SizedBox(height: 16),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Text("Add email address"),
+                            const Text("Add email address"),
                             TextButton(
                               onPressed: () {
                                 GoRouter.of(context).pushNamed("addemail");
                               },
-                              child: Text("Add"),
+                              child: const Text("Add"),
                             ),
                           ],
                         ),
                       ],
                       if (auth.currentUser!.emailVerified) ...[
-                        SizedBox(height: 16),
+                        const SizedBox(height: 16),
                         Text(
                           "Email verified",
                           style: Theme.of(context)

@@ -36,7 +36,7 @@ class EmailVerificationProvider with ChangeNotifier {
   }) async {
     try {
       await auth.currentUser!.sendEmailVerification();
-      return right(SuccessMessage(body: "Verification email sent to ${email}"));
+      return right(SuccessMessage(body: "Verification email sent to $email"));
     } on FirebaseAuthException catch (e) {
       return left(ErrorMessage(body: e.message!));
     } catch (e) {
@@ -49,8 +49,7 @@ class EmailVerificationProvider with ChangeNotifier {
   }) async {
     try {
       await auth.sendPasswordResetEmail(email: email);
-      return right(
-          SuccessMessage(body: "Password reset link sent to ${email}"));
+      return right(SuccessMessage(body: "Password reset link sent to $email"));
     } on FirebaseAuthException catch (e) {
       return left(ErrorMessage(body: e.message!));
     } catch (e) {

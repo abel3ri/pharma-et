@@ -16,8 +16,8 @@ class ForgorPasswordPage extends StatefulWidget {
 }
 
 class _ForgorPasswordPageState extends State<ForgorPasswordPage> {
-  TextEditingController _emailController = TextEditingController();
-  GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  final TextEditingController _emailController = TextEditingController();
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,11 +26,11 @@ class _ForgorPasswordPageState extends State<ForgorPasswordPage> {
           onPressed: () {
             GoRouter.of(context).pop();
           },
-          icon: FaIcon(FontAwesomeIcons.xmark),
+          icon: const FaIcon(FontAwesomeIcons.xmark),
         ),
       ),
       body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 24),
+        padding: const EdgeInsets.symmetric(horizontal: 24),
         child: Center(
           child: Form(
             key: _formKey,
@@ -81,7 +81,7 @@ class _ForgorPasswordPageState extends State<ForgorPasswordPage> {
                   },
                   child:
                       Provider.of<EmailVerificationProvider>(context).isLoading
-                          ? SizedBox(
+                          ? const SizedBox(
                               width: 14,
                               height: 14,
                               child: CircularProgressIndicator(

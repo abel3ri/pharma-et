@@ -16,7 +16,7 @@ class HeaderText extends StatelessWidget {
           width: 5.0,
           height: 24.0,
           color: Theme.of(context).colorScheme.primary,
-          margin: EdgeInsets.only(right: 8.0),
+          margin: const EdgeInsets.only(right: 8.0),
         ),
         Text(
           headerText,

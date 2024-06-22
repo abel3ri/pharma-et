@@ -17,13 +17,14 @@ class _SplashPageState extends State<SplashPage> {
       body: StreamBuilder(
         stream: auth.authStateChanges(),
         builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.waiting)
-            return Center(child: CircularProgressIndicator());
-          if (snapshot.hasError) {
-            return WelcomePage();
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const Center(child: CircularProgressIndicator());
           }
-          if (snapshot.data == null) return WelcomePage();
-          return HomePage();
+          if (snapshot.hasError) {
+            return const WelcomePage();
+          }
+          if (snapshot.data == null) return const WelcomePage();
+          return const HomePage();
         },
       ),
     );

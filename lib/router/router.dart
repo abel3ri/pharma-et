@@ -6,7 +6,9 @@ import 'package:pharma_et/pages/ForgotPasswordPage.dart';
 import 'package:pharma_et/pages/HomePage.dart';
 import 'package:pharma_et/pages/LoginPage.dart';
 import 'package:pharma_et/pages/OTPPage.dart';
+import 'package:pharma_et/pages/PrescriptionsListPage.dart';
 import 'package:pharma_et/pages/ProfilePage.dart';
+import 'package:pharma_et/pages/SearchPage.dart';
 import 'package:pharma_et/pages/SignUpPage.dart';
 import 'package:pharma_et/pages/SplashPage.dart';
 import 'package:pharma_et/pages/WelcomePage.dart';
@@ -68,7 +70,7 @@ class AppRouter {
       name: 'azmedicines',
       pageBuilder: (context, state) => SlideTransitionPage(
         key: state.pageKey,
-        child: AZMedicines(),
+        child: const AZMedicines(),
         rtl: false,
       ),
     ),
@@ -105,6 +107,22 @@ class AppRouter {
         key: state.pageKey,
         rtl: false,
         child: const ForgorPasswordPage(),
+      ),
+    ),
+    GoRoute(
+      path: "/search",
+      name: 'search',
+      pageBuilder: (context, state) => SlideTransitionPage(
+        key: state.pageKey,
+        child: const SearchPage(),
+      ),
+    ),
+    GoRoute(
+      path: "/prescriptions",
+      name: 'prescriptions',
+      pageBuilder: (context, state) => SlideTransitionPage(
+        key: state.pageKey,
+        child: const PrescriptionsListPage(),
       ),
     ),
   ]);
