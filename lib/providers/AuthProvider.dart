@@ -4,6 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'package:fpdart/fpdart.dart';
 import 'package:go_router/go_router.dart';
 import 'package:pharma_et/models/Error.dart';
@@ -107,8 +108,8 @@ class AuthProvider with ChangeNotifier {
       } else {
         await db.collection("users").doc(user.uid).set({
           "phoneNumber": _phoneNumber,
-          "firstName": _firstName,
-          "lastName": _lastName,
+          "firstName": _firstName.capitalize,
+          "lastName": _lastName.capitalize,
           "email": _email,
           "createdAt": DateTime.now(),
         });
