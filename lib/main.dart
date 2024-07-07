@@ -1,5 +1,11 @@
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 import 'package:pharma_et/l10n/l10n.dart';
 import 'package:pharma_et/providers/AuthProvider.dart';
 import 'package:pharma_et/providers/BannerCarouselProvider.dart';
@@ -12,16 +18,11 @@ import 'package:pharma_et/providers/NavigationBarProvider.dart';
 import 'package:pharma_et/providers/PrescriptionImageProvider.dart';
 import 'package:pharma_et/providers/SignUpFormProvider.dart';
 import 'package:pharma_et/providers/UserProvider.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-
 import 'package:pharma_et/firebase_options.dart';
 import 'package:pharma_et/providers/ThemeProvider.dart';
 import 'package:pharma_et/router/router.dart';
 import 'package:pharma_et/utils/Theme.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 
 void main(List<String> args) async {
   WidgetsFlutterBinding.ensureInitialized();
